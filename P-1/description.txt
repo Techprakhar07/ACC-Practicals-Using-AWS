@@ -1,1 +1,78 @@
+Step 1: Create a Lambda Function
+- Go to the Lambda Service in the AWS Management Console.
+- Click Create Function.
+- Select Author from Scratch.
+- Enter a function name.
+- Set the runtime to Node.js 20.
+- Click Create Function to finish.
+
+Step 2: Monitor Lambda Metrics
+- After the function is created, navigate to your Lambda function.
+- Select the Monitor tab, then click on the Metrics sub-tab.
+- You will see metrics like Error Count and Success Rate (%).
+- These metrics will allow us to set up an alarm that triggers when the error count exceeds a certain threshold.
+
+Step 3: Create an SNS Topic for Notifications
+- Navigate to the Simple Notification Service (SNS) in the AWS console.
+- In the left panel, click Topics.
+- Click Create Topic.
+- Select Standard as the type of the topic.
+- Enter a name for the topic.
+- Click Create Topic.
+
+Step 4: Subscribe to the SNS Topic
+- After the topic is created, go to the Subscriptions tab for that topic.
+- Click Create Subscription.
+- In the Create Subscription section:
+  ❖ Select Email as the protocol.
+  ❖ Enter your email address where you want to receive notifications.
+- Click Create Subscription.
+- The status of the subscription will be Pending. Go to your email and confirm the subscription.
+- After confirmation, the status will change to Confirmed.
+
+Step 5: Test the Lambda Function
+- Return to your Lambda function, and go to the Code tab.
+- Click the dropdown next to the Test button, then select Configure Test Event.
+  ❖ Enter an event name.
+  ❖ Click Save.
+- Click Test to execute your Lambda function.
+- Note: The error metrics may take some time to reflect in the Monitor tab.
+
+Step 6: Create a CloudWatch Alarm
+- Go to the CloudWatch service in the AWS console.
+- Click Create Alarm.
+- Click Select Metrics.
+- In the Metrics section, select Lambda Metrics.
+- Choose the By Function Name option.
+- Select your Lambda function, and choose the Errors metric.
+- Click Select Metric.
+- In the Specify Metric and Conditions section:
+  - In the Statistics field, change the default Average to Maximum.
+  - In the Conditions section, set the threshold type to Static.
+  - Under Whenever Error Count is, select Greater Than or Equal to.
+  - Set the value to 1.
+
+Step 7: Set Up Notifications for the Alarm
+- In the Notifications section, set the Alarm State Trigger to In Alarm.
+- Under Send a Notification to, select Existing SNS Topic.
+- Choose the SNS topic you created earlier.
+- The email endpoint you provided will appear in the notification settings.
+- Click Next.
+
+Step 8: Name and Create the Alarm
+- Enter a name for your alarm.
+- Click Next, then Create Alarm.
+
+Step 9: Trigger the Alarm with a Lambda Error
+- Go back to your Lambda function.
+- Introduce an intentional error in the code (for example, change JSON to JON).
+- Click Deploy to save your changes.
+- Click Test 4 to 5 times to invoke the function and produce errors.
+
+Step 10: Verify the CloudWatch Alarm
+- Go back to the CloudWatch service.
+- Check the state of your alarm, which will be set to In Alarm if errors were detected.
+
+Step 11: Receive SNS Email Notification
+- Once the alarm state changes to In Alarm, you should receive an email notification at the email address you provided during the SNS subscription setup.
 
