@@ -1,0 +1,23 @@
+Step 1: Create an SQS Queue
+- Sign in to the AWS Management Console.
+- Navigate to the SQS service.
+- Click Create Queue.
+- Choose the type (Standard or FIFO) and enter the queue name.
+- Configure settings like message retention and visibility timeout.
+- Click Create Queue.
+
+Step 2: Send Messages to the Queue
+- Use the AWS CLI or SDKs to send messages.
+- Example using AWS CLI:
+  aws sqs send-message --queue-url <queue_url> --message-body "Test message"
+
+Step 3: Receive Messages from the Queue
+- Configure an EC2 instance with an IAM role that has SQS permissions.
+- Use a script to poll the queue and read messages.
+- Example script:
+  aws sqs receive-message --queue-url <queue_url> --max-number-of-messages 1
+
+Step 4: Process and Delete Messages
+- Process the received message and delete it from the queue after processing.
+- Example script to delete a message:
+  aws sqs delete-message --queue-url <queue_url> --receipt-handle <receipt_handle>
