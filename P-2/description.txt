@@ -1,0 +1,31 @@
+Step 1: Sign in to AWS Management Console
+- Log in to the AWS Management Console using your credentials.
+
+Step 2: Create a CloudTrail Trail
+- Search for CloudTrail in the AWS Management Console.
+- Click on Create Trail.
+- Enter a name for the trail.
+- Choose an existing S3 bucket or create a new one to store the logs.
+- Enable CloudWatch Logs integration and create a new CloudWatch Logs group.
+- Configure event delivery settings.
+
+Step 3: Configure CloudWatch Logs
+- Navigate to CloudWatch and select Log Groups.
+- Choose the log group created by CloudTrail.
+- Set up metric filters for specific events, such as IAM changes or S3 bucket access.
+
+Step 4: Create an SNS Topic
+- Navigate to SNS in the AWS Console.
+- Click on Create Topic and select Standard as the topic type.
+- Enter a name and click Create Topic.
+- Copy the ARN for use in CloudWatch alarm configurations.
+
+Step 5: Create a CloudWatch Alarm
+- Go to CloudWatch > Alarms > Create Alarm.
+- Select the metric filter created in Step 3.
+- Set the threshold condition and attach the SNS topic for notifications.
+
+Step 6: Test the CloudTrail and Notification Setup
+- Perform an activity in your AWS account, such as creating an S3 bucket.
+- Check CloudTrail logs and ensure the event is recorded.
+- Verify that CloudWatch triggers an alarm and sends an SNS notification to the subscribed endpoint.
