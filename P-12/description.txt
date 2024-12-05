@@ -1,0 +1,18 @@
+Step 1: Create a CloudFront Distribution
+- Go to the CloudFront service in the AWS Management Console.
+- Click Create Distribution and choose Web as the delivery method.
+- Configure the origin settings and select the S3 bucket as the source.
+- Set up caching and distribution settings (e.g., default root object, custom error pages).
+
+Step 2: Configure Security Settings
+- Navigate to the CloudFront distribution and select the Behaviors tab.
+- Configure access permissions (e.g., Restrict Viewer Access).
+- Enable signed URLs and set expiration times for restricted access.
+
+Step 3: Test Image Access
+- Copy the CloudFront distribution URL and access images using the URL.
+- Ensure that access control is working as expected and images are served securely.
+
+Step 4: Verify Distribution
+- Use the AWS CLI to check the status of the distribution and confirm successful deployment.
+  aws cloudfront get-distribution --id <distribution-id>
