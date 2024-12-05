@@ -1,0 +1,30 @@
+Step 1: Create a Custom IAM Policy
+- Go to the IAM service in the AWS Console.
+- Click Policies > Create Policy.
+- Use the JSON editor to define the policy with specific permissions, such as:
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": "s3:*",
+        "Resource": "arn:aws:s3:::<bucket-name>/*"
+      }
+    ]
+  }
+- Review and create the policy.
+
+Step 2: Create an IAM Role and Attach the Policy
+- Navigate to IAM > Roles > Create Role.
+- Choose the trusted entity type (e.g., EC2).
+- Attach the custom policy created in Step 1.
+- Complete the role creation.
+
+Step 3: Attach the IAM Role to an EC2 Instance
+- Go to the EC2 service in the AWS Console.
+- Select the EC2 instance and attach the role created in Step 2.
+
+Step 4: Test S3 Access
+- SSH into the EC2 instance and run the command:
+  aws s3 ls s3://<bucket-name>
+- Verify that the instance has access as per the custom policy.
