@@ -1,0 +1,20 @@
+Step 1: Create a KMS Key
+- Navigate to the KMS service in the AWS Management Console.
+- Click Create Key and select the key type (e.g., Symmetric).
+- Configure key policies and access permissions.
+- Finish the key creation and take note of the key ARN.
+
+Step 2: Enable Encryption for the S3 Bucket
+- Go to the S3 service in the AWS Management Console.
+- Select the bucket and go to the Properties tab.
+- Under Default Encryption, choose AWS-KMS and select the key created in Step 1.
+- Save changes to enable bucket encryption.
+
+Step 3: Upload Data to the Bucket
+- Upload files to the S3 bucket to ensure that they are encrypted using the specified KMS key.
+- Check the encryption status by viewing object properties.
+
+Step 4: Verify Data Encryption
+- Use the AWS CLI or SDK to list bucket objects and confirm the encryption:
+  aws s3api head-object --bucket <bucket-name> --key <file-key>
+- Ensure that the `ServerSideEncryption` field shows `aws:kms`.
