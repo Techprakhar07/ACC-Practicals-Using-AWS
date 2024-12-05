@@ -1,0 +1,24 @@
+Step 1: Create an RDS Instance
+- Navigate to the RDS service in the AWS Management Console.
+- Click Create database.
+- Choose the database engine (e.g., MySQL).
+- Configure the instance settings (DB instance class, storage, etc.).
+- Set the master username and password.
+- Configure public access as required and select VPC security groups.
+- Click Create database.
+
+Step 2: Connect to the RDS Instance
+- Open MySQL Workbench or a similar client.
+- Enter the endpoint, username, and password to connect.
+- Test the connection to ensure access is granted.
+
+Step 3: Insert and Query Data
+- Use SQL commands to insert data into tables.
+- Example command:
+  INSERT INTO test_table (column1, column2) VALUES ('value1', 'value2');
+- Query data using SELECT:
+  SELECT * FROM test_table;
+
+Step 4: Verify Data Operations
+- Run queries to ensure data is correctly inserted and retrieved.
+- Use the database client to monitor the data.
