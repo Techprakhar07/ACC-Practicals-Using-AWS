@@ -1,0 +1,21 @@
+Step 1: Create a Snapshot of the Unencrypted RDS Instance
+- Go to the RDS service in the AWS Management Console.
+- Select the unencrypted RDS instance.
+- Click Actions > Take snapshot.
+- Wait for the snapshot to be created.
+
+Step 2: Copy the Snapshot and Enable Encryption
+- Navigate to the Snapshots section in RDS.
+- Select the snapshot and click Copy Snapshot.
+- Enable encryption and choose a KMS key.
+- Start the copy process.
+
+Step 3: Restore the Encrypted Snapshot
+- Once the snapshot is copied, select it and click Restore Snapshot.
+- Configure the new RDS instance settings (DB instance class, storage, etc.).
+- Launch the new instance and verify the encryption status.
+
+Step 4: Verify the Encryption Settings
+- Check the properties of the new RDS instance to ensure encryption is enabled.
+- Run the following command to confirm encryption:
+  aws rds describe-db-instances --db-instance-identifier <db-instance-id>
