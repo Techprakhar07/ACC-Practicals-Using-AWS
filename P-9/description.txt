@@ -1,0 +1,29 @@
+Step 1: Create an S3 Bucket
+- Navigate to the S3 service in the AWS Management Console.
+- Click Create Bucket and configure the bucket settings.
+- Ensure the bucket is in the same region as the RDS instance for data transfer.
+
+Step 2: Grant Permissions for S3 Access
+- Go to the IAM service in the AWS Console.
+- Create an IAM policy with permissions to write to the S3 bucket:
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": "s3:PutObject",
+        "Resource": "arn:aws:s3:::<bucket-name>/*"
+      }
+    ]
+  }
+- Attach this policy to the IAM role used by the RDS instance.
+
+Step 3: Export the RDS Snapshot to S3
+- Navigate to the RDS service in the AWS Console.
+- Select the RDS snapshot and click Export to S3.
+- Choose the S3 bucket created in Step 1.
+- Configure export settings and start the export process.
+
+Step 4: Verify the Exported Data
+- Go to the S3 bucket and check for the exported data.
+- Verify the data structure and content to ensure successful export.
