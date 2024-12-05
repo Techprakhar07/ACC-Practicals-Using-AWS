@@ -1,0 +1,18 @@
+Step 1: Create a VPC and Subnets
+- Navigate to the VPC service in the AWS Management Console.
+- Click Create VPC and configure the CIDR block and settings.
+- Create public and private subnets within the VPC.
+
+Step 2: Configure the Default NACL
+- Go to the Network ACLs section in the VPC dashboard.
+- Select the default NACL and add inbound and outbound rules as needed.
+- Configure rules to allow or deny specific IP addresses and ports.
+
+Step 3: Customize NACL Rules
+- Create a new NACL and attach it to specific subnets.
+- Add rules to allow HTTP/HTTPS traffic and deny unwanted traffic.
+- Configure rules based on security requirements.
+
+Step 4: Test NACL Settings
+- Use tools like `ping` or `curl` from an EC2 instance to test inbound and outbound traffic.
+- Verify that traffic is allowed or blocked according to the NACL rules.
