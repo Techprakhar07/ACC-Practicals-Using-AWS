@@ -1,0 +1,21 @@
+Step 1: Create an S3 Bucket
+- Navigate to the S3 service in the AWS Management Console.
+- Click Create Bucket and configure the bucket settings.
+- Upload a sample file to the bucket.
+
+Step 2: Create an IAM Role
+- Go to the IAM service in the AWS Console.
+- Click Roles > Create Role.
+- Choose AWS service as the trusted entity and select EC2.
+- Attach the policy that grants S3 read/write access (e.g., AmazonS3FullAccess).
+- Review and create the role.
+
+Step 3: Attach the IAM Role to an EC2 Instance
+- Go to the EC2 service in the AWS Console.
+- Select an existing EC2 instance or launch a new one.
+- Attach the IAM role created in Step 2 to the instance.
+
+Step 4: Verify S3 Access from EC2
+- SSH into the EC2 instance and use the AWS CLI to list S3 bucket contents:
+  aws s3 ls s3://<bucket-name>
+- Verify that the EC2 instance can read or write to the bucket based on the assigned policy.
